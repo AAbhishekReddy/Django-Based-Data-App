@@ -1,0 +1,20 @@
+{% extends "data_app/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<br>
+    <div class="container jumbotron" align='center'>
+        <div class="content-section" style="color: rgb(0, 0, 0);">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group" style="color: rgb(0, 0, 0);">
+                    <legend class="border-bottom mb-4">Enter Details for NYSE predictions</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-primary" type="submit">Predict</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

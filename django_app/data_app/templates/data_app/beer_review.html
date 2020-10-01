@@ -1,0 +1,49 @@
+{% extends "data_app/layout.html" %}
+
+{% block content %}
+<br>
+<br>
+{% if beers %}
+<div class="container border jumbotron">
+    <h3>BEER REVIEWS</h3>
+    <br>
+    <table class="table table-hove" id = "beers_table">
+        <thead> 
+            <tr>
+                <th><p align="center">Beer Name</p></th>
+                <th><p align="center">Aroma Review</p></th>
+                <th><p align="center">Pallete Review</p></th>
+                <th><p align="center">Taste Review</p></th>
+                <th><p align="center">Apprearence Review</p></th>
+                <th><p align="center">Beer ABV</p></th>
+                <th><p align="center">PREDICTION</p></th>
+                <th><p align="center">Date and Time</p></th>
+                <th><p align="center">ID</p></th>
+            </tr>
+        </thead>   
+        {% for beer in beers %}
+            <tbody>
+                <tr>
+                    <th><p align="center">{{beer.beer_name}}</p></th>
+                    <th><p align="center">{{beer.review_aroma}}</p></th>
+                    <th><p align="center">{{beer.review_pallete}}</p></th>
+                    <th><p align="center">{{beer.review_taste}}</p></th>
+                    <th><p align="center">{{beer.review_appearance}}</p></th>
+                    <th><p align="center">{{beer.beer_abv}}</p></th>
+                    <th><p align="center">{{beer.prediction_review}}</p></th>
+                    <th><p align="center">{{beer.date_time}}</p></th>
+                    <th><p align="center">{{beer.id}}</p></th>
+                </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+</div>
+<script>
+    $(function(){
+      $("#beers_table").dataTable();
+    })
+</script>
+{% endif %}
+</div>
+    
+{% endblock content %}
