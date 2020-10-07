@@ -21,12 +21,12 @@ You can find the live appllication [here](https://dj-data-app.herokuapp.com/)
     + Enter the details 
     + Copy the token
 
-3. **api/nyse**
+3. **/api/nyse**
     + enter the token 
     + enter the details and press post
 
 4. **/api/new_york**
     + Enter the token and post it to view the predictions
 
-5. **api/beer_predict**
+5. **/api/beer_predict**
     + Enter the token and press post to retrieve the post
