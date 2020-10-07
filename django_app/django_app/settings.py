@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'oat6azr37p-+uassqc%ganv36jgdc-n!1(0&dhheae5(uqx-ak'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,16 +80,29 @@ WSGI_APPLICATION = 'django_app.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'postgres',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'postgres',
+    #     'HOST': 'db',
+    #     'PORT': 5432,
+    # }
 }
 
+import dj_database_url
+
+db_from_env = dj_database_url.config(default="postgres://ejkgliseyprsim:e10f6246fd349ec2fff4c551a8b44cac305e70de5477672c4fb9adb22746a32e@ec2-52-70-15-120.compute-1.amazonaws.com:5432/d7vtbol4diaktu",
+                        conn_max_age=600, ssl_require=True) #making connection to heroku DB without having to set DATABASE_URL env variable
+
+print(db_from_env)
+
+DATABASES['default'] = db_from_env
+
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age = 600)
+# print(db_from_env)
+# DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -134,8 +147,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'Data_app_home'
 
 LOGIN_URL = '/login/'
-
-ALLOWED_HOSTS = ['a15ad11e24c2.ngrok.io', 'localhost', '127.0.0.1']
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',

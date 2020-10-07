@@ -27,14 +27,17 @@ class NewYorkViewSet(APIView):
         print(data)
         serializer = NewYorkSerializer(data = data)
         if serializer.is_valid(raise_exception = True):
-            token = data['token']
-            user_id = Token.objects.filter(key = token).values()[0]["user_id"]
+            try:
+                token = data['token']
+                user_id = Token.objects.filter(key = token).values()[0]["user_id"]
 
-            user = User.objects.get(id = user_id)
-            predictions = new_york.objects.filter(users = user).values()
-            
-            return Response(predictions, status = HTTP_200_OK)
-        return Response(serializer.errors, statis = HTTP_400_BAD_REQUEST)
+                user = User.objects.get(id = user_id)
+                predictions = new_york.objects.filter(users = user).values()
+                
+                return Response(predictions, status = HTTP_200_OK)
+            except KeyError as e:
+                return Response({"message":"Please enter the token to view the predictions"}, status = HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status = HTTP_400_BAD_REQUEST)
 
 class BeerViewSet(APIView):
     """
@@ -45,16 +48,20 @@ class BeerViewSet(APIView):
 
     def post(self, request, *args, **kwargs):
         data = request.data
+        print(data)
         serializer = BeerSerializer(data = data)
         if serializer.is_valid(raise_exception = True):
-            token = data['token']
-            user_id = Token.objects.filter(key = token).values()[0]["user_id"]
+            try:
+                token = data['token']
+                user_id = Token.objects.filter(key = token).values()[0]["user_id"]
 
-            user = User.objects.get(id = user_id)
-            predictions = beer_review.objects.filter(users = user).values()
-            print('predictions:', predictions)
-            
-            return Response(predictions, status = HTTP_200_OK)
+                user = User.objects.get(id = user_id)
+                predictions = beer_review.objects.filter(users = user).values()
+                print('predictions:', predictions)
+                
+                return Response(predictions, status = HTTP_200_OK)
+            except KeyError as e:
+                return Response({"message":"Please enter the token to view the predictions"}, status = HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, statis = HTTP_400_BAD_REQUEST)
 
 
