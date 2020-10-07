@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'knox',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -132,4 +135,15 @@ LOGIN_REDIRECT_URL = 'Data_app_home'
 
 LOGIN_URL = '/login/'
 
-ALLOWED_HOSTS = ['355a61eb5865.ngrok.io', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['a15ad11e24c2.ngrok.io', 'localhost', '127.0.0.1']
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}

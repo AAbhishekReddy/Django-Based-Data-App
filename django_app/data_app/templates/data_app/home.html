@@ -14,13 +14,28 @@
         <br>
         <div class = "row">
             <div class = "col-md-6">
-                <p align="center" style="font-size: 20px;">New York Stock Exchange Dataset</p>
-                <a href="{% url 'data_nyse' %}"><img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/AAbhishekReddy/data-app/master/support_models/images/nyse.jpg" alt="NYSE data" width="400" height="250"></a>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://raw.githubusercontent.com/AAbhishekReddy/data-app/master/support_models/images/nyse.jpg" alt="Card image cap" height="150px">
+                    <div class="card-body">
+                      <h5 class="card-title">NYSE Dataset</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="{% url 'data_nyse' %}" class="btn btn-primary">Predict NYSE data</a>
+                    </div>
+                  </div>
             </div>
             <div class = "col-md-6">
-                <p align="center" style="font-size: 20px;">Beer Review Dataset</p>
-                <a href="{% url 'data_beer' %}"><img src="https://raw.githubusercontent.com/AAbhishekReddy/data-app/master/support_models/images/craft-beer.jpg" alt="NYSE data" width="400" height="250"></a>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://raw.githubusercontent.com/AAbhishekReddy/data-app/master/support_models/images/craft-beer.jpg" alt="Card image cap" height="150px">
+                    <div class="card-body">
+                      <h5 class="card-title">Beer Review Dataset</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="{% url 'data_beer' %}" class="btn btn-primary">Predict Beer Rrevew</a>
+                    </div>
+                </div>
             </div>
         </div>
+        <br>
+        <br>
+        
     </div>
 {% endblock content %}

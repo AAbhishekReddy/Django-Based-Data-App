@@ -22,11 +22,14 @@ def nyse_reg(nyse_data):
 
 def beer_reg(beer_data):
     arr = np.array([beer_data[0], beer_data[1], beer_data[2]])
+    arr = arr.astype('float64') 
+
     file_path = os.path.dirname(os.path.realpath(__file__))
     file_path = os.path.join(file_path, "beer_pickle.h5")
 
     beer_pickle = pickle.load(open(file_path, 'rb')) 
 
     beer_data.append(beer_pickle.predict(arr.reshape(1,-1))[0])
+    print("Am I going wrong here?:", beer_data)
     
     return beer_data

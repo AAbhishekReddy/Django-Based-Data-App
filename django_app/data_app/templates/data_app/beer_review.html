@@ -19,6 +19,7 @@
                 <th><p align="center">PREDICTION</p></th>
                 <th><p align="center">Date and Time</p></th>
                 <th><p align="center">ID</p></th>
+                <th><p align="center">User</p></th>
             </tr>
         </thead>   
         {% for beer in beers %}
@@ -33,6 +34,7 @@
                     <th><p align="center">{{beer.prediction_review}}</p></th>
                     <th><p align="center">{{beer.date_time}}</p></th>
                     <th><p align="center">{{beer.id}}</p></th>
+                    <th><p align="center">{{beer.users}}</p></th>
                 </tr>
             </tbody>
         {% endfor %}
